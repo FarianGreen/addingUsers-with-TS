@@ -18,10 +18,14 @@ export const Header = () => {
       </Space>
       <Space>
         <Link to={Path.register}>
-          <CustomButton type="ghost" icon={<UserOutlined/>}>Registrate</CustomButton>
+          <CustomButton type="ghost" icon={<UserOutlined />}>
+            Registration
+          </CustomButton>
         </Link>
         <Link to={Path.login}>
-          <CustomButton type="ghost" icon={<LoginOutlined/>}>Sign In</CustomButton>
+          <CustomButton type="ghost" icon={<LoginOutlined />}>
+            Sign In
+          </CustomButton>
         </Link>
       </Space>
     </Layout.Header>

@@ -3,10 +3,11 @@ import { Layout } from "../../components/layout";
 import { CustomInput } from "../../components/custom-input";
 import { PasswordInput } from "../../components/custom-password-input";
 import { CustomButton } from "../../components/custom-button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Path } from "../../path/path";
 
 export const Login = () => {
+  const navigate = useNavigate()
   return (
     <Layout>
       <Row align="middle" justify="center">
@@ -14,7 +15,13 @@ export const Login = () => {
           <Form onFinish={() => null}>
             <CustomInput type="email" name="email" placeholder="Email" />
             <PasswordInput name="password" placeholder="Password" />
-            <CustomButton type="primary" htmlType="submit">
+            <CustomButton
+              type="primary"
+              htmlType="submit"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               Sign in
             </CustomButton>
           </Form>
