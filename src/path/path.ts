@@ -1,9 +1,9 @@
 export const Path = {
   home: "/",
-  emploeeAdd: "/emploee/add",
-  emploeeEdit: "/emploee/edit",
-  emploee: "/emploee",
-  status: "/status",
+  userAdd: "/user/add",
+  usersEdit: "/user/edit",
+  users: "/users",
+  user: "/user",
   login: "/login",
   register: "/register",
 } as const;

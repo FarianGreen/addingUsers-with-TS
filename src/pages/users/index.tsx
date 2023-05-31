@@ -14,14 +14,14 @@ const columns: ColumnsType<object | any> = [
 ];
 
 export const Users = () => {
-  const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.users.list);
   const navigate = useNavigate();
+  const goToAddUser = () => navigate(Path.userAdd);
   return (
     <Layout>
       <CustomButton
         type="primary"
-        onClick={() => null}
+        onClick={goToAddUser}
         icon={<PlusCircleOutlined />}
       >
         Add user
@@ -32,7 +32,7 @@ export const Users = () => {
         dataSource={data}
         pagination={false}
         onRow={(record) => {
-          return { onClick: () => navigate(`${Path.emploee}/${record.id}`) };
+          return { onClick: () => navigate(`${Path.user}/${record.id}`) };
         }}
       />
     </Layout>

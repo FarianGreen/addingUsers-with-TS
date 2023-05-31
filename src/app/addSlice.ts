@@ -31,8 +31,8 @@ const addUsersSlice = createSlice({
         profession: action.payload.profession,
       });
     },
-    removeUsers(state, action: PayloadAction<Users>) {
-      state.list.filter((user) => user.id !== action.payload.id);
+    removeUsers(state, action: PayloadAction<string>) {
+      state.list = state.list.filter((user) => user.id !== action.payload);
     },
   },
 });
