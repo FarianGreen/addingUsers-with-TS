@@ -25,7 +25,7 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
             }
 
             if (name === "confirmPassword") {
-              if (!value || getFieldValue("password") === value) {
+              if (getFieldValue("password") === value) {
                 return Promise.resolve();
               }
               return Promise.reject(new Error("Passwords must match"));
@@ -35,7 +35,7 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
                   new Error("Password should be longer than 7 characters")
                 );
               }
-              return Promise.resolve()
+              return Promise.resolve();
             }
           },
         }),
@@ -45,3 +45,4 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
     </Form.Item>
   );
 };
+//boleanlogick

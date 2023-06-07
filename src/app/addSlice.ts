@@ -1,14 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../interfaces/IUser";
 
-type Users = {
-  id: string;
-  name: string;
-  age: string;
-  profession: string;
-};
+
 
 type usersState = {
-  list: Users[];
+  list: IUser[]
 };
 
 const initialState: usersState = {
@@ -23,7 +19,7 @@ const addUsersSlice = createSlice({
   name: "addUsers",
   initialState,
   reducers: {
-    addUsers(state, action: PayloadAction<Users>) {
+    addUsers(state, action: PayloadAction<IUser>) {
       state.list.push({
         id: new Date().toISOString(),
         name: action.payload.name,

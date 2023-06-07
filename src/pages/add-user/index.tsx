@@ -5,19 +5,14 @@ import { useAppDispatch } from "../../app/hooks";
 import { addUsers } from "../../app/addSlice";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../path/path";
+import { IUser } from "../../interfaces/IUser";
 
-type Users = {
-  id: string;
-  name: string;
-  age: string;
-  profession: string;
-};
 
 export const AddUser = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleAddUser = (value: Users) => {
+  const handleAddUser = (value: IUser) => {
     dispatch(addUsers(value));
     navigate(Path.home);
   };
