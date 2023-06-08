@@ -12,7 +12,7 @@ const authSlice = createSlice({
       state.isLoggined = true;
       localStorage.setItem("isLoggined", 'true');
     },
-    logOut: (state, action) => {
+    logOut: (state, action:PayloadAction<boolean>) => {
         state.isLoggined = false;
         localStorage.setItem('isLoggined', 'false');
       }

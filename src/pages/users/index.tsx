@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { CustomButton } from "../../components/custom-button";
 import { Layout } from "../../components/layout";
@@ -6,6 +6,7 @@ import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../path/path";
+import { useEffect } from "react";
 
 const columns: ColumnsType<object | any> = [
   { title: "Name", dataIndex: "name", key: "firstName" },
@@ -14,9 +15,16 @@ const columns: ColumnsType<object | any> = [
 ];
 
 export const Users = () => {
+  const logined = useAppSelector((state) => state.login.isLoggined);
   const data = useAppSelector((state) => state.users.list);
   const navigate = useNavigate();
   const goToAddUser = () => navigate(Path.userAdd);
+
+  useEffect(() => {
+    if (!logined) {
+      navigate("/login");
+    }
+  }, [logined, navigate]);
   return (
     <Layout>
       <CustomButton

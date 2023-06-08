@@ -1,10 +1,10 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Layout } from "../../components/layout";
 import { Descriptions, Divider, Space } from "antd";
 import { CustomButton } from "../../components/custom-button";
-import { DeleteOutlined } from "@ant-design/icons";
-import { removeUsers } from "../../app/addSlice";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { removeUser } from "../../app/addSlice";
 import { Path } from "../../path/path";
 
 export const User = () => {
@@ -22,8 +22,8 @@ export const User = () => {
   }
 
   const deleteUser = () => {
-    dispatch(removeUsers(id));
-    navigate(Path.home);
+    dispatch(removeUser(id));
+    navigate(`${Path.status}/deleted`);
   };
 
   if (!user) {
@@ -32,7 +32,7 @@ export const User = () => {
 
   return (
     <Layout>
-      <Descriptions title="Информация о сотруднике" bordered>
+      <Descriptions title="User information" bordered>
         <Descriptions.Item
           label="Name"
           span={3}
@@ -56,6 +56,16 @@ export const User = () => {
             >
               Delete
             </CustomButton>
+
+            <Link to={`/user/edit/${user.id}`}>
+              <CustomButton
+                shape="round"
+                type="default"
+                icon={<EditOutlined />}
+              >
+                Edit
+              </CustomButton>
+            </Link>
           </Space>
         </>
       )}
